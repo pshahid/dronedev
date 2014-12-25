@@ -1,0 +1,13 @@
+{
+	"name": "dronedev",
+	"description": "Application made for developing with AR Parrot drones.",
+	"main": "public/index.html",
+	"window": {
+		"toolbar": false,
+		"width": 1080,
+		"height": 768
+	},
+	"dependencies": {
+		"angular": "~1.2.x"
+	}
+}
