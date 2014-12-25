@@ -8,6 +8,6 @@
 		"height": 768
 	},
 	"dependencies": {
-		"angular": "~1.2.x"
+		"ar-drone": "~0.3.x"
 	}
 }

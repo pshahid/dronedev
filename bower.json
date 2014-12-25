@@ -1,0 +1,15 @@
+{
+	"name": "dronedev",
+	"version": "0.0.1",
+	"authors": [
+		"Paul Shahid"
+	],
+	"license": "MIT",
+	"dependencies": {
+		"angular": ">=1.2.0",
+		"angular-sanitize": ">= 1.3.3",
+		"angular-ui-router": ">=0.2.0",
+		"font-awesome": ">=4.2.0"
+	}
+
+}
