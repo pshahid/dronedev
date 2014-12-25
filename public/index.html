@@ -1,9 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="dronedev">
 	<head>
+		<link href="components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+		<link href="components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">	
+
 	</head>
 
-	<body>
-		<p>Hello world!</p>
+
+	<body ng-controller="IOController" ng-keydown="keyEvent($event)" ng-keyup="keyUpEvent($event)">
+		<p ng-model="key">Key code pressed: {{key}}<br/> You pressed: {{keyName}}</p>
+
+		<button class="btn btn-primary" ng-click="takeoff()">Take Off</button>
+		<button class="btn btn-danger" ng-click="land()">Land</button>
+
+		<script src="components/angular/angular.js"></script>
+		<script src="js/dronedev.js"></script>
+		<script src="js/controllers.js"></script>
+		<script src="js/dronesvc.js"></script>
 	</body>
 </html>
