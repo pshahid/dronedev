@@ -3,11 +3,12 @@
 	"description": "Application made for developing with AR Parrot drones.",
 	"main": "public/index.html",
 	"window": {
-		"toolbar": false,
+		"toolbar": true,
 		"width": 1080,
 		"height": 768
 	},
 	"dependencies": {
-		"ar-drone": "~0.3.x"
+		"ar-drone": "~0.3.x",
+		"fluent-ffmpeg": "~1.7"
 	}
 }

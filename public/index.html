@@ -8,10 +8,29 @@
 
 
 	<body ng-controller="IOController" ng-keydown="keyEvent($event)" ng-keyup="keyUpEvent($event)">
-		<p ng-model="key">Key code pressed: {{key}}<br/> You pressed: {{keyName}}</p>
+		<h1>Zee drones are coming!</h1>
+		<p ng-model="key">Key codes: 
+			<br/> <kbd>A</kbd> <strong>ROLL LEFT</strong>
+				  <kbd>D</kbd> <strong>ROLL RIGHT</strong>
+		 		  <kbd>W</kbd> <strong>Roll FORWARD</strong>
+				  <kbd>S</kbd> <strong>Roll BACK</strong>
+			<br/><kbd><i class="fa fa-arrow-left"></i></kbd> <strong>YAW LEFT</strong>
+				  <kbd><i class="fa fa-arrow-right"></i></kbd> <strong>YAW RIGHT</strong>
+				  <kbd><i class="fa fa-arrow-up"></i></kbd> <strong>ASCEND</strong>
+				  <kbd><i class="fa fa-arrow-down"></i></kbd> <strong>DESCEND</strong>
+			<br/><!-- Key code pressed: <h3 style="display: inline;">{{key}}</h3> -->
+			<br/> You pressed: <h3 style="display: inline;">{{keyName}}</h3>
+		</p>
 
 		<button class="btn btn-primary" ng-click="takeoff()">Take Off</button>
 		<button class="btn btn-danger" ng-click="land()">Land</button>
+		<div>
+			Battery level: {{battery}}
+		</div>
+		<div style="margin-top: 10px;">
+			<canvas id="canvas"> </canvas>
+			<p>Nav Data: {{navData.demo.altitude}}</p>
+		</div>
 
 		<script src="components/angular/angular.js"></script>
 		<script src="js/dronedev.js"></script>
