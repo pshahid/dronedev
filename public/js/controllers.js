@@ -3,27 +3,34 @@ angular.module('dronedev.controllers', [])
 
 	$scope.keyName = "None";
 	$scope.navData = null;
-	var stream = DroneService.pngStream;
+	var stream = DroneService.pngStream,
+		imgPrefix = 'data:image/png;base64,';
 
 	stream.on('data', function(data) {
-		var blob = new Blob([data], {type: 'image/png'});
-		var url = URL.createObjectURL(blob);
-		var img = new Image;
+		// var blob = new Blob([data], {type: 'image/png'});
 
+		var url = imgPrefix + data.toString('base64');
+		
+		// console.log("Data in, ", url);
+
+		var img = document.getElementById('mainImg');
+		var ctx = document.getElementById("canvas").getContext("2d");
+		
 		img.onload = function() {
-			var ctx = document.getElementById("canvas").getContext("2d");
+			// console.log("Onload called");
+			
 			ctx.drawImage(this, 0, 0);
+
 			URL.revokeObjectURL(url);
 		};
 
-		img.src = url;
-
+		img.src=url;
 		// console.log("Got data from pngstream, ", data);
 	});
 
 	DroneService.client.on('navdata', function(data) {
 		$scope.navData = data;
-		console.log(data);
+		// console.log(data);
 
 		if (data.hasOwnProperty('demo')) {
 			$scope.battery = data.demo.batteryPercentage;
@@ -33,7 +40,7 @@ angular.module('dronedev.controllers', [])
 	$scope.UP = function() {
 		DroneService.client.up(0.2);
 		$scope.keyName = "up";
-		console.log("We rollin up");
+		// console.log("We rollin up");
 	};
 
 	$scope.DOWN = function() {
@@ -121,7 +128,7 @@ angular.module('dronedev.controllers', [])
 	};
 
 	$scope.land = function() {
-		console.log(DroneService.client.land());
+		DroneService.client.land();
 		$interval.cancel($scope.batteryCheckPromise);
 	};
 
