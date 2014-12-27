@@ -3,6 +3,9 @@ angular.module('dronedev.controllers', [])
 
 	$scope.keyName = "None";
 	$scope.navData = null;
+
+	DroneService.client.ftrim();
+
 	var stream = DroneService.pngStream,
 		imgPrefix = 'data:image/png;base64,';
 
@@ -10,7 +13,7 @@ angular.module('dronedev.controllers', [])
 		// var blob = new Blob([data], {type: 'image/png'});
 
 		var url = imgPrefix + data.toString('base64');
-		
+
 		// console.log("Data in, ", url);
 
 		var img = document.getElementById('mainImg');
@@ -38,33 +41,33 @@ angular.module('dronedev.controllers', [])
 	});
 
 	$scope.UP = function() {
-		DroneService.client.up(0.2);
+		DroneService.client.up(1);
 		$scope.keyName = "up";
 		// console.log("We rollin up");
 	};
 
 	$scope.DOWN = function() {
-		DroneService.client.down(0.4);
+		DroneService.client.down(1);
 		$scope.keyName = "down";
 	};
 
 	$scope.ROLLLEFT = function() {
-		DroneService.client.left(0.4);
+		DroneService.client.left(1);
 		$scope.keyName = "left";
 	};
 
 	$scope.ROLLRIGHT = function() {
-		DroneService.client.right(0.4);
+		DroneService.client.right(1);
 		$scope.keyName = "right";
 	};
 
 	$scope.ROLLFRONT = function() {
-		DroneService.client.front(0.4);
+		DroneService.client.front(1);
 		$scope.keyName = "roll front";
 	};
 
 	$scope.ROLLBACK = function() {
-		DroneService.client.back(0.4);
+		DroneService.client.back(1);
 		$scope.keyName = "roll back";
 	};
 
