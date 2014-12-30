@@ -8,32 +8,39 @@ angular.module('dronedev.controllers', [])
 
 	var stream = DroneService.pngStream,
 		imgPrefix = 'data:image/png;base64,';
+		// derp = require('myxbox');
+
+	// xbox.on('a:press', function (key) {
+ //  		console.log(key + ' press');
+	// });
+
+	// xbox.on('a:press', function (key) {
+ //  		console.log(key + ' press');
+	// });
+
+	// xbox.on('left:move', function(position){
+	// 	console.log('left:move', position);
+	// });
+
+	// xbox.on('right:move', function(position){
+	// 	console.log('right:move', position);
+	// });
 
 	stream.on('data', function(data) {
-		// var blob = new Blob([data], {type: 'image/png'});
-
 		var url = imgPrefix + data.toString('base64');
-
-		// console.log("Data in, ", url);
-
 		var img = document.getElementById('mainImg');
 		var ctx = document.getElementById("canvas").getContext("2d");
 		
 		img.onload = function() {
-			// console.log("Onload called");
-			
 			ctx.drawImage(this, 0, 0);
-
 			URL.revokeObjectURL(url);
 		};
 
 		img.src=url;
-		// console.log("Got data from pngstream, ", data);
 	});
 
 	DroneService.client.on('navdata', function(data) {
 		$scope.navData = data;
-		// console.log(data);
 
 		if (data.hasOwnProperty('demo')) {
 			$scope.battery = data.demo.batteryPercentage;
@@ -43,7 +50,6 @@ angular.module('dronedev.controllers', [])
 	$scope.UP = function() {
 		DroneService.client.up(1);
 		$scope.keyName = "up";
-		// console.log("We rollin up");
 	};
 
 	$scope.DOWN = function() {
@@ -123,24 +129,11 @@ angular.module('dronedev.controllers', [])
 
 	$scope.takeoff = function() {
 		DroneService.client.takeoff();
-
-		// $scope.batteryCheckPromise = $interval(function() {
-		// 	$scope.battery = DroneService.client._lastBattery;
-		// }, 1000);
-		
 	};
 
 	$scope.land = function() {
 		DroneService.client.land();
 		$interval.cancel($scope.batteryCheckPromise);
 	};
-
-	// $scope.navDataIn = function(data) {
-	// 	console.log(data);
-	// 	$scope.navData = data;
-	// };
-
-	
-
 
 }]);
