@@ -9,7 +9,6 @@
 	},
 	"dependencies": {
 		"ar-drone": "~0.3.x",
-		"fluent-ffmpeg": "~1.7",
 		"xbox-controller": "~0.5.x"
 	},
 	"scripts": {
